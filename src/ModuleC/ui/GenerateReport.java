@@ -75,7 +75,7 @@ public class GenerateReport extends JPanel {
     public void generateReport() {
         String formattedReport = "Monthy Order Report: " + jcbMonth.getSelectedItem().toString() + "\n";
         System.out.println(formattedReport);
-        
+        jplOutput.removeAll();
         jplOutput.add(generatorLabel("Monthy Order Report: "));
         jplOutput.add(generatorLabel(jcbMonth.getSelectedItem().toString()));
         jplOutput.add(generatorLabel(""));
@@ -91,8 +91,8 @@ public class GenerateReport extends JPanel {
         jplOutput.add(generatorLabel("Total Number of Order"));
         jplOutput.add(generatorLabel("Total Number of Food Ordered"));
         jplOutput.add(generatorLabel("Average Number of Food Ordered"));
-        jplOutput.add(generatorLabel("Total Price of Order"));
-        jplOutput.add(generatorLabel("Average Price of Order"));
+        jplOutput.add(generatorLabel("Total Price of Order (RM)"));
+        jplOutput.add(generatorLabel("Average Price of Order (RN)"));
         
         int totalOrder = orderList.getNumberOfOrder(), totalOrderItem = 0, avgOrderItem = 0;
         double totalPrice = 0, avgPrice = 0;
@@ -114,7 +114,19 @@ public class GenerateReport extends JPanel {
         jplOutput.add(generatorTextField(String.valueOf(totalPrice)));
         jplOutput.add(generatorTextField(String.valueOf(avgPrice)));
         
-        removeAll();
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        
+        
         add(jplReportConstraint, BorderLayout.NORTH);
         add(jplOutput, BorderLayout.CENTER);
         validate();
