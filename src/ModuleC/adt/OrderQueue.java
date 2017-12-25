@@ -8,6 +8,8 @@ package ModuleC.adt;
 import ModuleA.entity.Customer;
 import ModuleB.entity.DeliveryMan;
 import ModuleC.entity.Order;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -110,6 +112,27 @@ public class OrderQueue<T> implements  OrderInterface<T> {
     }
     
     @Override
+    public OrderInterface<T> getOrder(Date orderMonth) {
+        Node<T> currentOrder = firstOrder;
+        OrderInterface<Order> orderList = new OrderQueue<>();
+        Order order;
+        DateFormat dateFormat = new SimpleDateFormat("MM");
+        if (!isEmpty()) {
+            for (int counter = 0; counter < getNumberOfOrder(); counter++) {
+                order = (Order)currentOrder.getData();
+                
+                if (dateFormat.format(order.getPayment().getPaymentDate()).equals(dateFormat.format(orderMonth)))
+                    orderList.enqueueOrder(order);
+                
+                currentOrder = currentOrder.getNext();
+            }
+        }
+        
+        
+        return (OrderInterface<T>)orderList;
+    }
+    
+    @Override
     public OrderInterface<T> getOrder(Customer customer, DeliveryMan deliveryMan) {
         Node<T> currentOrder = firstOrder;
         OrderInterface<Order> orderList = new OrderQueue<>();
@@ -117,9 +140,6 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         if (!isEmpty()) {
             for (int counter = 0; counter < getNumberOfOrder(); counter++) {
                 order = (Order)currentOrder.getData();
-                System.out.println("counter: " + counter);
-                System.out.println("id: " + order.getOrderID());
-                System.out.println(order.toString());
                 if (order.getCustomer().getCustIC().equalsIgnoreCase(customer.getCustIC()) && order.getDelivery().getStaffID() == deliveryMan.getStaffID())
                     orderList.enqueueOrder(order);
                 

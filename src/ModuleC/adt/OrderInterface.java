@@ -7,6 +7,7 @@ package ModuleC.adt;
 
 import ModuleA.entity.Customer;
 import ModuleB.entity.DeliveryMan;
+import java.util.Date;
 
 /**
  *
@@ -46,6 +47,13 @@ public interface OrderInterface<T> {
      * @return order | null, if order id not match with any order
      */
     public T getOrder(T order);
+    
+    /**
+     * Task: get the order that order in parameter orderMonth
+     * @param orderMonth
+     * @return 
+     */
+    public OrderInterface<T> getOrder(Date orderMonth);
     
     /**
      * Task: get the order that customer is parameter customer and delivery man is parameter deliveryMan
