@@ -61,26 +61,6 @@ public class CustomerList<T> implements CustomerInterface<T> {
     return isSuccessful;
     }
     
-    public T DeleteCust(int givenCustPosition){
-     T result = null;
-
-    if ((givenCustPosition >= 1) && (givenCustPosition <= numberCustOfEntries)) {
-      if (givenCustPosition == 1) {      
-        result = (T)firstCust.getCustData();   
-        firstCust = firstCust.getNextCust();
-      } else {                        
-        CustData<T> custBefore = getCustAt(givenCustPosition - 1);
-        CustData<T> custToRemove = custBefore.getNextCust();
-        CustData<T> custAfter = custToRemove.getNextCust();
-        custBefore.setNextCust(custAfter); 
-        result = custToRemove.getCustData();  
-      }
-
-      numberCustOfEntries--;
-    }
-
-    return result;
-    }
     public boolean updateCust(int givenCustPosition, T newCust){
     boolean isSuccessful = true;
 

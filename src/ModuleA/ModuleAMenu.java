@@ -22,12 +22,9 @@ public class ModuleAMenu extends JFrame{
     private JButton createFood = new JButton("Create Food");
     private JButton updateFood = new JButton("Update Food");
     private JButton deleteFood = new JButton("Delete Food");
-    private JButton createMenu = new JButton("Create Menu");
     private JButton updateMenuStatus = new JButton("Update Menu Status");
-    private JButton deleteMenu = new JButton("Delete Menu");
     private JButton createCust = new JButton("Create Customer");
     private JButton updateCust = new JButton("Update Customer");
-    private JButton deleteCust = new JButton("Delete Customer");
     private JButton sortingMethod = new JButton("Sort Method");
     private JButton generateRatingReport = new JButton("Generate Rating Report");
     
@@ -54,12 +51,9 @@ public class ModuleAMenu extends JFrame{
         jpButton.add(createFood);
         jpButton.add(updateFood);
         jpButton.add(deleteFood);
-        jpButton.add(createMenu);
         jpButton.add(updateMenuStatus);
-        jpButton.add(deleteMenu);
         jpButton.add(createCust);
         jpButton.add(updateCust);
-        jpButton.add(deleteCust);
         jpButton.add(sortingMethod);
         jpButton.add(generateRatingReport);
         jPanel1.add(jpButton, BorderLayout.CENTER);
@@ -78,18 +72,12 @@ public class ModuleAMenu extends JFrame{
         updateFood.addActionListener(listener2);
         DeleteFoodListener listener3 = new DeleteFoodListener();
         deleteFood.addActionListener(listener3);
-        CreateMenuListener listener4 = new CreateMenuListener();
-        createMenu.addActionListener(listener4);
         UpdateMenuStatusListener listener5 = new UpdateMenuStatusListener();
         updateMenuStatus.addActionListener(listener5);
-        DeleteMenuListener listener6 = new DeleteMenuListener();
-        deleteMenu.addActionListener(listener6);
         CreateCustListener listener7 = new CreateCustListener();
         createCust.addActionListener(listener7);
         UpdateCustListener listener8 = new UpdateCustListener();
         updateCust.addActionListener(listener8);
-        DeleteCustListener listener9 = new DeleteCustListener();
-        deleteCust.addActionListener(listener9);
         SortingListener listener14 = new SortingListener();
         sortingMethod.addActionListener(listener14);
         GenerateRatingReportListener listener15 = new GenerateRatingReportListener();
@@ -171,16 +159,7 @@ public class ModuleAMenu extends JFrame{
             frame.setVisible(true);
          }
     }
-    private class CreateMenuListener implements ActionListener{
-         public void actionPerformed(ActionEvent e) {
-            CreateMenu frame = new CreateMenu();
-            frame.getContentPane().setPreferredSize(new Dimension(400, 300));
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-            frame.setVisible(true); 
-         }
-    }
+
     private class UpdateMenuStatusListener implements ActionListener{
          public void actionPerformed(ActionEvent e) {
             UpdateMenuStatus frame = new UpdateMenuStatus();
@@ -192,16 +171,7 @@ public class ModuleAMenu extends JFrame{
          }
     }
     
-    private class DeleteMenuListener implements ActionListener{
-         public void actionPerformed(ActionEvent e) {
-            DeleteMenu frame = new DeleteMenu();
-            frame.getContentPane().setPreferredSize(new Dimension(400, 300));
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-            frame.setVisible(true);
-         }
-    }
+
     private class CreateCustListener implements ActionListener{
          public void actionPerformed(ActionEvent e) {
             CreateCustomerList frame = new CreateCustomerList();
@@ -223,17 +193,7 @@ public class ModuleAMenu extends JFrame{
          }
     }
     
-    private class DeleteCustListener implements ActionListener{
-         public void actionPerformed(ActionEvent e) {
-            DeleteCustomerList frame = new DeleteCustomerList();
-            frame.getContentPane().setPreferredSize(new Dimension(400, 300));
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-            frame.setVisible(true); 
-         }
-    }
-    
+
     private class SortingListener implements ActionListener{
          public void actionPerformed(ActionEvent e) {
             SortingMethod frame = new SortingMethod();

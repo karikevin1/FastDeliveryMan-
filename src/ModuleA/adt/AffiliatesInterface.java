@@ -10,7 +10,7 @@ package ModuleA.adt;
  * @author User
  */
 public interface AffiliatesInterface<T> {
-    public boolean addAffiliates(T newAffiliates);
+        public boolean addAffiliates(T newAffiliates);
         public boolean addAffiliates(int newAffiliatesPosition, T newAffiliates);
         public T DeleteAffiliates(int givenAffiliatesPosition); 
         public void clearAffiliates();

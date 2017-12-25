@@ -11,8 +11,6 @@ import ModuleA.entity.Menu;
  */
 public interface MenuInterface<T> {
         public boolean addMenu(T newMenu);
-        public boolean addMenu(int newMenuPosition, T newMenu);
-        public T DeleteMenu(int givenMenuPosition); 
         public void clearMenu();
         public boolean updateMenu(int givenMenuPosition, T newMenu);
         public T getMenuEntry(int givenMenuPosition);

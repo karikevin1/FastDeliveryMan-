@@ -108,9 +108,11 @@ public class PendingList extends JFrame{
     public void addID(){
             jcbName.addItem(new ComboBoxObj("--Please Select--",0));
             for(int a=1 ; a <= deliveryProfileList.getNumberOfEntries();a++){
-                jcbName.addItem(new ComboBoxObj(deliveryProfileList.getPositionProfile(a).getStaffName(),
-                deliveryProfileList.getPositionProfile(a).getStaffID()));
-            }
+                    if(deliveryProfileList.getPositionProfile(a).getStatus().equals("staff")){
+                    jcbName.addItem(new ComboBoxObj(deliveryProfileList.getPositionProfile(a).getStaffName(),
+                    deliveryProfileList.getPositionProfile(a).getStaffID()));
+                }
+            }      
     }
     
     public void clearText(){

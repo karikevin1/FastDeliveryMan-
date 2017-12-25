@@ -86,8 +86,9 @@ public class UpdateStatus extends JFrame{
                          jtaStaffList.setText("Invalid Inputs, Wrong ID inserted or Operation failed.");
                      }
                      new DeliveryManManagement().setList(deliveryProfileList); // update the list in the main page
-               
                      clearText();
+                     
+                     dispose(); 
                  }catch(Exception ex){
                      jtaStaffList.setText("Invalid Input due to invalid inputs.\n Error:" + ex.getMessage());
                  }
@@ -105,8 +106,10 @@ public class UpdateStatus extends JFrame{
          public void addID(){
             jcbName.addItem(new ComboBoxObj("--Please Select--",0));
             for(int a=1 ; a <= deliveryProfileList.getNumberOfEntries();a++){
-                jcbName.addItem(new ComboBoxObj(deliveryProfileList.getPositionProfile(a).getStaffName(),
-                deliveryProfileList.getPositionProfile(a).getStaffID()));
+                    if(deliveryProfileList.getPositionProfile(a).getStatus().equals("staff")){
+                     jcbName.addItem(new ComboBoxObj(deliveryProfileList.getPositionProfile(a).getStaffName(),
+                     deliveryProfileList.getPositionProfile(a).getStaffID()));
+                 }
             }
          }
 
