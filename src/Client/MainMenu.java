@@ -10,6 +10,8 @@ import ModuleA.entity.Food;
 import ModuleA.entity.Menu;
 import ModuleA.entity.Restaurant;
 import ModuleB.DeliveryManManagement;
+import ModuleB.adt.DeliveryProfileInterface;
+import ModuleB.entity.DeliveryMan;
 import ModuleC.adt.ItemInterface;
 import ModuleC.adt.ItemList;
 import ModuleC.adt.OrderInterface;
@@ -52,6 +54,7 @@ public class MainMenu extends JFrame {
     final static public OrderInterface<Order> ORDER_QUEUE = new OrderQueue<>();                                             //sing keat added these
     final static public AffiliatesInterface<Restaurant> RESTAURANT_LIST = new AffiliatesList<>();                           //sing keat added these
     final static public CustomerInterface<Customer> CUSTOMER_LIST = new CustomerList<>();                                   //sing keat added these
+    final static public DeliveryProfileInterface<DeliveryMan> DELIVERYPROFILE_LIST = new DeliveryManManagement().getList(); //sing keat added these
     
     public static String username = new LoginSystem().getUsername();
     public static String password = new LoginSystem().getPassword();
