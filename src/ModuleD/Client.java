@@ -6,7 +6,7 @@
 package ModuleD;
 
 import ModuleB.DeliveryManManagement;
-import ModuleB.adt.DeliveryProfile;
+import ModuleB.adt.DeliveryProfileADT;
 import ModuleB.adt.DeliveryProfileInterface;
 import ModuleB.entity.DeliveryMan;
 import ModuleD.adt.ScheduleADT;

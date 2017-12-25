@@ -10,7 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 import ModuleB.adt.DeliveryProfileInterface;
-import ModuleB.adt.DeliveryProfile;
+import ModuleB.adt.DeliveryProfileADT;
 import ModuleB.entity.DeliveryMan;
 import ModuleD.Client;
 import ModuleD.adt.ScheduleInterface;
@@ -31,7 +31,7 @@ public class DeliveryManManagement extends JFrame{
     private JComboBox<ComboBoxObj> sortBox = new JComboBox<ComboBoxObj>();
     private JButton sortButton = new JButton("Sort List");
     
-    public static DeliveryProfileInterface<DeliveryMan> deliveryProfileList = new DeliveryProfile<>(); // the super list object
+    public static DeliveryProfileInterface<DeliveryMan> deliveryProfileList = new DeliveryProfileADT<>(); // the super list object
     public static ScheduleInterface<Schedule> deliveryList = new Client().getDeliList();
     
     public void setList (DeliveryProfileInterface<DeliveryMan> deliveryProfileList){

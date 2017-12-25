@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ModuleD;
-import ModuleB.adt.DeliveryProfile;
+import ModuleB.adt.DeliveryProfileADT;
 import ModuleB.adt.DeliveryProfileInterface;
 import ModuleB.entity.DeliveryMan;
 import ModuleD.entity.Schedule;

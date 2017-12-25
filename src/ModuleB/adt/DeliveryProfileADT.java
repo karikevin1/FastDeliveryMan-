@@ -10,12 +10,12 @@ import ModuleB.entity.DeliveryMan;
  *
  * @author kevin lim
  */
-public class DeliveryProfile<T> implements DeliveryProfileInterface<T> {
+public class DeliveryProfileADT<T> implements DeliveryProfileInterface<T> {
     
     private DeliveryManNode<T> firstMan;
     private int numberOfMen;
     
-        public DeliveryProfile(){
+        public DeliveryProfileADT(){
              clear();
         }
     
