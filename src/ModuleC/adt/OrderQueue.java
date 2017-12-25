@@ -200,7 +200,6 @@ public class OrderQueue<T> implements  OrderInterface<T> {
     /* Quicksort part start */
     private void quickSort() {
         firstOrder = quickSort(firstOrder, lastOrder);
-        System.out.println();
     }
   
     private Node<T> quickSort(Node<T> first, Node<T> last) {
