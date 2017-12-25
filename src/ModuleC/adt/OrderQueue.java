@@ -8,7 +8,6 @@ package ModuleC.adt;
 import ModuleA.entity.Customer;
 import ModuleB.entity.DeliveryMan;
 import ModuleC.entity.Order;
-import ModuleC.entity.Payment;
 import java.util.Date;
 
 /**
