@@ -12,7 +12,6 @@ import ModuleA.entity.Customer;
 public interface CustomerInterface<T> {
         public boolean addCust(T newCust);
         public boolean addCust(int newCustPosition, T newCust);
-        public T DeleteCust(int givenCustPosition); 
         public void clearCust();
         public boolean updateCust(int givenCustPosition, T newCust);
         public T getCustEntry(int givenCustPosition);

@@ -42,54 +42,6 @@ public class MenuList<T> implements MenuInterface<T> {
         return true;
     }
     
-    public boolean addMenu(int newMenuPosition, T newMenu){
-        boolean isSuccessful = true;
-
-    if ((newMenuPosition >= 1) && (newMenuPosition <= numberMenuOfEntries + 1)) {
-      MenuData newMenuData = new MenuData(newMenu);
-
-      if (isMenuEmpty() || (newMenuPosition == 1)) {     
-        newMenuData.nextMenu = firstMenu;
-        firstMenu = newMenuData;
-      } else {								                    
-        MenuData menuBefore = firstMenu;
-        for (int i = 1; i < newMenuPosition - 1; ++i) {
-          menuBefore = menuBefore.nextMenu;		
-        }
-
-        newMenuData.nextMenu = menuBefore.nextMenu;	
-        menuBefore.nextMenu = newMenuData;		
-      }
-
-      numberMenuOfEntries++;
-    } else {
-      isSuccessful = false;
-    }
-
-    return isSuccessful;
-    }
-    
-    public T DeleteMenu(int givenMenuPosition){
-         T result = null;                 
-
-    if ((givenMenuPosition >= 1) && (givenMenuPosition <= numberMenuOfEntries)) {
-      if (givenMenuPosition == 1) {      
-        result = firstMenu.menuData;    
-        firstMenu = firstMenu.nextMenu;
-      } else {                         
-        MenuData menuBefore = firstMenu;
-        for (int i = 1; i < givenMenuPosition - 1; ++i) {
-          menuBefore = menuBefore.nextMenu;		
-        }
-        result = menuBefore.nextMenu.menuData;  
-        menuBefore.nextMenu = menuBefore.nextMenu.nextMenu;	
-      } 																// one to be deleted (to disconnect node from chain)
-
-      numberMenuOfEntries--;
-    }
-
-    return result; 
-    }
     public boolean updateMenu(int givenMenuPosition, T newMenu){
         boolean isSuccessful = true;
 
