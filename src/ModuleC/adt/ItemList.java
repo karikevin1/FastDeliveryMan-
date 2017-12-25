@@ -78,20 +78,7 @@ public class ItemList<T> implements ItemInterface<T> {
 
         if (!isEmpty()) {
             int position = getItemPosition(item);
-            if ((position >= 1) && (position <= getNumberOfItem())) {
-                if (position == 1) {      // case 1: remove first entry
-                    result = firstItem.getData();     // save entry to be removed
-                    firstItem = firstItem.getNext();
-                } else {                         // case 2: givenPosition > 1
-                    Node<T> nodeBefore = getNodeAt(position - 1);
-                    Node<T> nodeToRemove = nodeBefore.getNext();
-                    Node<T> nodeAfter = nodeToRemove.getNext(); // nodeBefore.next.next
-                    nodeBefore.setNext(nodeAfter);
-                    result = nodeToRemove.getData();  // save entry to be removed
-                } // one to be deleted (to disconnect node from chain)
-
-                numberOfItem--;
-            }
+            result = removeItem(position);
         }
         
         return result; // return removed entry, or null
@@ -122,21 +109,21 @@ public class ItemList<T> implements ItemInterface<T> {
         return result;
     }
 
-//    @Override
-//    public boolean containsItem(T anEntry) {
-//        boolean found = false;
-//        Node<T> currentItem = firstItem;
-//
-//        while (!found && (currentItem != null)) {
-//            if (anEntry.equals(currentItem.getData())) {
-//                found = true; // break
-//            } else {
-//                currentItem = currentItem.getNext();
-//            }
-//        }
-//
-//        return found;
-//    }
+    @Override
+    public boolean containsItem(T anEntry) {
+        boolean found = false;
+        Node<T> currentItem = firstItem;
+
+        while (!found && (currentItem != null)) {
+            if (anEntry.equals(currentItem.getData())) {
+                found = true; // break
+            } else {
+                currentItem = currentItem.getNext();
+            }
+        }
+
+        return found;
+    }
 
     @Override
     public boolean checkItemExistency(T selectedItem) {

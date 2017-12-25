@@ -136,8 +136,10 @@ public class CustomerList<T> implements CustomerInterface<T> {
         
         for (int counter = 0 ; counter < getNumberOfCust() ; counter++) {
             customer = (Customer)currentCustomer.custData;
-            if (customer.getCustTelNo().equalsIgnoreCase(phoneNum))
+            if (customer.getCustTelNo().equalsIgnoreCase(phoneNum)){
                 result = (T)customer;
+                break;
+            }
             else
                 currentCustomer = currentCustomer.getNextCust();
         }
