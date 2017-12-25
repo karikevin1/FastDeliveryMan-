@@ -29,7 +29,7 @@ public class DailyProfile extends JFrame{
        
        public DailyProfile(){
             addID(); // put in staff id into the combobox
-            setTitle("Access Pending List");
+            setTitle("Daily Performance Report");
             jblName.setHorizontalAlignment(SwingConstants.CENTER);
             jblComment.setHorizontalAlignment(SwingConstants.CENTER);
    
