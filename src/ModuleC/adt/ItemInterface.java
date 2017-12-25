@@ -18,7 +18,7 @@ public interface ItemInterface<T> {
     public T getItem(int givenPosition);
     public boolean checkItemExistency(T selectedItem);
     public int getItemPosition(T item);
-//    public boolean containsItem(T newItem);
+    public boolean containsItem(T anItem);
     public int getNumberOfItem();
     public boolean isEmpty();
     public int subtractQuantity(T item, int value);
