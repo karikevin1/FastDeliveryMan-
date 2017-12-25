@@ -28,6 +28,13 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
+    public Payment(double totalAmount, String method, Order order) {
+        this.paymentDate = new Date();
+        this.totalAmount = totalAmount;
+        this.method = method;
+        this.order = order;
+    }
+
     public Payment(int paymentID, Date paymentDate, double totalAmount, String method, Order order) {
         this.paymentID = paymentID;
         this.paymentDate = paymentDate;

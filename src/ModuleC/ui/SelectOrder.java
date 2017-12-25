@@ -14,10 +14,8 @@ import static ModuleC.ui.OrderUI.CUSTOMER_LIST;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -31,21 +29,33 @@ public class SelectOrder extends JPanel{
     private final JPanel jplOrderList = new JPanel();
     private final JLabel jlbPhoneNum = new JLabel("Customer Phone Number: ", SwingConstants.RIGHT);
     private final JTextField jtfPhoneNum = new JTextField();
-    private final JButton jbtRetrieveOrder = new JButton("Retrieve Order");
+    private final JLabel jlbSortByPrice = new JLabel("Sort orders by total price: ", SwingConstants.RIGHT);
+    private final JButton jbtSortByPrice = new JButton("Highest Price");
+    private final JButton jbtRetrieveOrder = new JButton("Retrieve Order by Order Time");
     private final JButton jbtBack = new JButton("Back");
     private OrderInterface<Order> orderList = new OrderQueue<>();
     
     public SelectOrder() {
-        RetrieveOrderActList retrieveOrderAct = new RetrieveOrderActList();
         
-        jbtRetrieveOrder.addActionListener(retrieveOrderAct);
+        jbtRetrieveOrder.addActionListener((ActionEvent e) -> {
+            retrieveOrderAct();
+            initOrderListPanel();
+        });
         jbtBack.addActionListener((ActionEvent e) -> {
             OrderUI.changePanel(new OrderUIType());
         });
+        jbtSortByPrice.addActionListener((ActionEvent e) -> {
+            retrieveOrderAct();
+            orderList.sortByTotalPrice();
+            initOrderListPanel();
+        });
+        
         jplPhoneNumber.add(jlbPhoneNum);
         jplPhoneNumber.add(jtfPhoneNum);
         jplPhoneNumber.add(jbtBack);
         jplPhoneNumber.add(jbtRetrieveOrder);
+        jplPhoneNumber.add(jlbSortByPrice);
+        jplPhoneNumber.add(jbtSortByPrice);
         setLayout(new BorderLayout());
         add(jplPhoneNumber, BorderLayout.NORTH);
         add(jplOrderList, BorderLayout.CENTER);
@@ -76,19 +86,17 @@ public class SelectOrder extends JPanel{
         return jbtView;
     }
     
-    private class RetrieveOrderActList implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                Customer customer = CUSTOMER_LIST.getCustByPhoneNum(jtfPhoneNum.getText());
-                
-                orderList = OrderUI.ORDER_QUEUE.getOrder(customer, new DeliveryMan("LimKH",1629,"0162903850", "no2, jln6", "Male", "970629-14-5571",2000.00,2,15,12,20));
-                
-                initOrderListPanel();
-            } catch (Exception ex) {
-                 JOptionPane.showMessageDialog(null, "Please enter another phone number.", "Phone Number not found", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+    public void retrieveOrderAct() {
+//      try {
+            Customer customer = CUSTOMER_LIST.getCustByPhoneNum(jtfPhoneNum.getText());
+
+            orderList = OrderUI.ORDER_QUEUE.getOrder(customer, new DeliveryMan("LimKH",1629,"0162903850", "no2, jln6", "Male", "970629-14-5571",2000.00,2,15,12,20));
+
+            System.out.println();
+
+//      } catch (Exception ex) {
+//          JOptionPane.showMessageDialog(null, "Please enter another phone number.", "Phone Number not found", JOptionPane.ERROR_MESSAGE);
+//      }
     }
     
     

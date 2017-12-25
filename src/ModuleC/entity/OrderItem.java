@@ -10,8 +10,9 @@ public class OrderItem {
 
     public OrderItem() {}
     
-    public OrderItem(Food item) {
+    public OrderItem(Food item, Order orderID) {
         this.foodItem = item;
+        this.orderID = orderID;
         this.itemQTY = 1;
     }
     

@@ -14,6 +14,7 @@ import ModuleC.adt.OrderInterface;
 import ModuleC.adt.OrderQueue;
 import ModuleC.entity.Order;
 import ModuleC.entity.OrderItem;
+import ModuleC.entity.Payment;
 import ModuleD.Client;
 import ModuleD.adt.ScheduleInterface;
 import ModuleD.entity.Schedule;
@@ -106,6 +107,16 @@ public class OrderUI extends JFrame{
         
         ScheduleInterface<Schedule> deliveryList = new Client().getDeliList();
         
+        Order order2 = new Order();
+        ItemInterface<OrderItem> itemList2 = new ItemList<>();
+        order2.setCustomer(CUSTOMER_LIST.getCustEntry(1));
+        itemList2.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(1).getMenu(1).getFood(1), 1));
+        itemList2.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(1).getMenu(1).getFood(2), 1));
+        order2.setDelivery(deliveryList.getSchedule(0));
+        order2.setItemList(itemList2);
+        order2.setPayment(new Payment("Cash"));
+        ORDER_QUEUE.enqueueOrder(order2);
+        
         Order order = new Order();
         ItemInterface<OrderItem> itemList = new ItemList<>();
         itemList.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(1).getMenu(1).getFood(1), 2));
@@ -116,15 +127,21 @@ public class OrderUI extends JFrame{
         order.setCustomer(CUSTOMER_LIST.getCustEntry(1));
         order.setDelivery(deliveryList.getSchedule(0));
         order.setItemList(itemList);
+        order.setPayment(new Payment("Cash"));
         ORDER_QUEUE.enqueueOrder(order);
-        Order order2 = new Order();
-        ItemInterface<OrderItem> itemList2 = new ItemList<>();
-        order2.setCustomer(CUSTOMER_LIST.getCustEntry(1));
-        itemList2.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(1).getMenu(1).getFood(1), 1));
-        itemList2.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(1).getMenu(1).getFood(2), 1));
-        order2.setDelivery(deliveryList.getSchedule(0));
-        order2.setItemList(itemList2);
-        ORDER_QUEUE.enqueueOrder(order2);
+        
+        
+        
+        Order order3 = new Order();
+        ItemInterface<OrderItem> itemList3 = new ItemList<>();
+        order3.setCustomer(CUSTOMER_LIST.getCustEntry(3));
+        itemList3.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(2).getMenu(2).getFood(1), 9));
+        itemList3.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(2).getMenu(2).getFood(3), 6));
+        itemList3.addItem(new OrderItem(RESTAURANT_LIST.getAffiliatesEntry(2).getMenu(2).getFood(2), 1));
+        order3.setDelivery(deliveryList.getSchedule(1));
+        order3.setItemList(itemList3);
+        order3.setPayment(new Payment("Cash"));
+        ORDER_QUEUE.enqueueOrder(order3);
         
         new OrderUI();
     }

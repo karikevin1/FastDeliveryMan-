@@ -8,7 +8,6 @@ package ModuleC.adt;
 import ModuleA.entity.Customer;
 import ModuleB.entity.DeliveryMan;
 import ModuleC.entity.Order;
-import ModuleC.entity.Payment;
 import java.util.Date;
 
 /**
@@ -35,7 +34,7 @@ public class OrderQueue<T> implements  OrderInterface<T> {
     public void enqueueOrder(T newOrder) {
         Order order = (Order)newOrder;
         order.setOrderTime(new Date());
-        order.setPayment(new Payment(new Date()));
+        order.getPayment().setPaymentDate(new Date());
         order.getPayment().setTotalAmount(order.getItemList().calculateTotal());
         Node<T> newOrderLink = null;
         
@@ -96,11 +95,6 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         return order;
     }
     
-    /**
-     * match para order's id with each order in the queue
-     * @param order
-     * @return order | null, if order id not match with any order
-     */
     @Override
     public T getOrder(T order) {
         T result = null;
@@ -115,12 +109,6 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         return result;
     }
     
-    /**
-     * get the order that customer is para customer and delivery man is para deliveryMan
-     * @param customer
-     * @param deliveryMan
-     * @return orderlist | null, if no order match
-     */
     @Override
     public OrderInterface<T> getOrder(Customer customer, DeliveryMan deliveryMan) {
         Node<T> currentOrder = firstOrder;
@@ -172,6 +160,7 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         return (this.firstOrder == null) && (this.lastOrder == null);
     }
     
+    @Override
     public void displayChain() {
         System.out.println("Chain start");
         Node<T> currentNode = firstOrder;
@@ -181,4 +170,107 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         }
         System.out.println("Chain end");
     }
+
+    @Override
+    public void sortByTotalPrice() {
+        quickSort();
+    }
+    
+    /* Quicksort part start */
+    private void quickSort() {
+        firstOrder = quickSort(firstOrder, lastOrder);
+        System.out.println();
+    }
+  
+    private Node<T> quickSort(Node<T> first, Node<T> last) {
+        /* Base condition */
+        if (first == last || first == null || first.getNext() == null)
+            return first;
+        
+        /* Partition the list */
+        // PartitionResult contain left first node, left last node, pivot, right first node, right last node
+        PartitionResult partitionResult = partition(first, last);
+        Node<T> leftFirst = partitionResult.leftFirst;
+        Node<T> leftLast = partitionResult.leftLast;
+        Node<T> pivot = partitionResult.pivot;
+        Node<T> rightFirst = partitionResult.rightFirst;
+        Node<T> rightLast = partitionResult.rightLast;
+        
+        /* Recur left part */
+        Node<T> resultLeft = null;
+        if (null != leftFirst)
+            resultLeft = quickSort(leftFirst, leftLast);
+        
+        /* Recur right part */
+        Node<T> resultRight = null;
+        if (null != rightFirst)
+            resultRight = quickSort(rightFirst, rightLast);
+        
+        /* Link pivot with the right first node */
+        if (resultRight != null)
+            pivot.setNext(resultRight);
+        
+        /* Return first node */
+        if (null == resultLeft) {
+            // If left part has nothing, return pivot. (Pivot is the first node)
+            return pivot;
+        } else {
+            // Else return the first node of the left part
+            firstOrder = resultLeft;
+            lastOrder = rightLast;
+            leftFirst.setNext(pivot);
+            return resultLeft;
+        }
+    }
+    
+    private PartitionResult partition(Node<T> first, Node<T> last) {
+        Node<T> pivot = last;
+        Node<T> tailNode = last;
+        Node<T> currentNode = first;
+        Node<T> previousNode = null;
+        Node<T> newFirst = null;
+        
+        while (currentNode != pivot && currentNode != null){
+            Node<T> nextNode = currentNode.getNext();
+            Order currentOrder = (Order)currentNode.getData();
+            Order pivotOrder = (Order)pivot.getData();
+            
+            /* Compare the total amount of the orders. */
+            if (currentOrder.getPayment().getTotalAmount() < pivotOrder.getPayment().getTotalAmount()) {
+                if (null != previousNode) {
+                    previousNode.setNext(currentNode.getNext());
+                }
+                currentNode.setNext(null);
+                tailNode.setNext(currentNode);
+                tailNode = currentNode;
+            } else {
+                if (newFirst == null)
+                    newFirst = currentNode;
+                if (previousNode != null)
+                    previousNode.setNext(currentNode);
+                previousNode = currentNode;
+            }
+            
+            currentNode = nextNode;
+        }
+        
+        PartitionResult partitionResult = new PartitionResult();
+        partitionResult.rightLast = tailNode;
+        partitionResult.rightFirst = pivot.getNext();
+        partitionResult.pivot = pivot;
+        partitionResult.leftLast = previousNode;
+        partitionResult.leftFirst = newFirst;
+        
+        return partitionResult;
+    }
+    
+    class PartitionResult<T> {
+        public Node<T> leftFirst;
+        public Node<T> leftLast;
+        public Node<T> pivot;
+        public Node<T> rightFirst;
+        public Node<T> rightLast;
+    }
+    
+    /* Quicksort part end */
 }

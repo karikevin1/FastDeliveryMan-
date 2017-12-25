@@ -89,7 +89,7 @@ public class SelectMenuItem extends JPanel{
             //get the selected button to update the item list.
             for (int loopCnt = 0 ; loopCnt < jbtFoodList.length ; loopCnt++) {
                 if (jbtFoodList[loopCnt] == buttonClicked){
-                    order.getItemList().addItem(new OrderItem(foodList.getFoodEntry(loopCnt + 1)));
+                    order.getItemList().addItem(new OrderItem(foodList.getFoodEntry(loopCnt + 1), order));
                     break;
                 }
             }
