@@ -29,6 +29,7 @@ public class ModuleAMenu extends JFrame{
     private JButton updateCust = new JButton("Update Customer");
     private JButton deleteCust = new JButton("Delete Customer");
     private JButton sortingMethod = new JButton("Sort Method");
+    private JButton generateRatingReport = new JButton("Generate Rating Report");
     
     private JPanel jPanel1 = new JPanel();
     private JPanel jPanel2 = new JPanel();
@@ -60,6 +61,7 @@ public class ModuleAMenu extends JFrame{
         jpButton.add(updateCust);
         jpButton.add(deleteCust);
         jpButton.add(sortingMethod);
+        jpButton.add(generateRatingReport);
         jPanel1.add(jpButton, BorderLayout.CENTER);
         
         createAffiliatesListener listnener10 = new createAffiliatesListener();
@@ -90,6 +92,8 @@ public class ModuleAMenu extends JFrame{
         deleteCust.addActionListener(listener9);
         SortingListener listener14 = new SortingListener();
         sortingMethod.addActionListener(listener14);
+        GenerateRatingReportListener listener15 = new GenerateRatingReportListener();
+        generateRatingReport.addActionListener(listener15);
         add(jPanel1);
         
     }
@@ -233,6 +237,17 @@ public class ModuleAMenu extends JFrame{
     private class SortingListener implements ActionListener{
          public void actionPerformed(ActionEvent e) {
             SortingMethod frame = new SortingMethod();
+            frame.getContentPane().setPreferredSize(new Dimension(600, 400));
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            frame.setVisible(true); 
+         }
+    }
+    
+    private class GenerateRatingReportListener implements ActionListener{
+         public void actionPerformed(ActionEvent e) {
+            GenerateRatingReport frame = new GenerateRatingReport();
             frame.getContentPane().setPreferredSize(new Dimension(600, 400));
             frame.pack();
             frame.setLocationRelativeTo(null);
