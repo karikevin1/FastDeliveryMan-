@@ -1,23 +1,5 @@
 package ModuleC.ui;
 
-import ModuleA.adt.AffiliatesInterface;
-import ModuleA.adt.AffiliatesList;
-import ModuleA.adt.CustomerInterface;
-import ModuleA.adt.CustomerList;
-import ModuleA.entity.Customer;
-import ModuleA.entity.Food;
-import ModuleA.entity.Menu;
-import ModuleA.entity.Restaurant;
-import ModuleC.adt.ItemInterface;
-import ModuleC.adt.ItemList;
-import ModuleC.adt.OrderInterface;
-import ModuleC.adt.OrderQueue;
-import ModuleC.entity.Order;
-import ModuleC.entity.OrderItem;
-import ModuleC.entity.Payment;
-import ModuleD.Client;
-import ModuleD.adt.ScheduleInterface;
-import ModuleD.entity.Schedule;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,9 +12,9 @@ import javax.swing.SwingConstants;
 
 public class OrderUI extends JFrame{
     private final static JPanel JP_CONTENT = new JPanel();
-    final static public OrderInterface<Order> ORDER_QUEUE = new OrderQueue<>();
-    final static public AffiliatesInterface<Restaurant> RESTAURANT_LIST = new AffiliatesList<>();
-    final static public CustomerInterface<Customer> CUSTOMER_LIST = new CustomerList<>();
+//    final static public OrderInterface<Order> ORDER_QUEUE = new OrderQueue<>();
+//    final static public AffiliatesInterface<Restaurant> RESTAURANT_LIST = new AffiliatesList<>();
+//    final static public CustomerInterface<Customer> CUSTOMER_LIST = new CustomerList<>();
     
     public OrderUI() {
         setTitle("Order");
@@ -45,8 +27,10 @@ public class OrderUI extends JFrame{
         changePanel(new OrderUIType());
     }
     
+    // ignore this, this is for testing purpose
     public static void main(String[] args) {
         // TODO code application logic here
+        /*
         RESTAURANT_LIST.addAffiliates(new Restaurant("McD", "jalan ampang", "0342563124"));
         RESTAURANT_LIST.addAffiliates(new Restaurant("KFC", "jalan ampang", "0342563124"));
         RESTAURANT_LIST.addAffiliates(new Restaurant("Pizza Hut", "jalan ampang", "0342563124"));
@@ -144,6 +128,7 @@ public class OrderUI extends JFrame{
         ORDER_QUEUE.enqueueOrder(order3);
         
         new OrderUI();
+        */
     }
     
     //move this to main page, change the jpSelectRestaurant name

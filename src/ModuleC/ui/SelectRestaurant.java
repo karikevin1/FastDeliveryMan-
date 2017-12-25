@@ -1,5 +1,6 @@
 package ModuleC.ui;
 
+import Client.MainMenu;
 import ModuleA.entity.Restaurant;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -17,11 +18,11 @@ public class SelectRestaurant extends JPanel{
     public SelectRestaurant(){
         PassSelectedRest passSelectedRest = new PassSelectedRest();
 
-        jbtRestaurantList = new JButton[OrderUI.RESTAURANT_LIST.getNumberOfAffiliates()];
+        jbtRestaurantList = new JButton[MainMenu.RESTAURANT_LIST.getNumberOfAffiliates()];
         jpSelectRestaurant = new JPanel(new GridLayout(0, 5));
         //change the loop refer to restaurantlist size
-        for (int i = 0, loopCnt = 1 ; i < OrderUI.RESTAURANT_LIST.getNumberOfAffiliates() ; i++, loopCnt++){
-            jbtRestaurantList[i] = new JButton("" + OrderUI.RESTAURANT_LIST.getAffiliatesEntry(loopCnt).getName()); // get the restaurants from the list to buttons
+        for (int i = 0, loopCnt = 1 ; i < MainMenu.RESTAURANT_LIST.getNumberOfAffiliates() ; i++, loopCnt++){
+            jbtRestaurantList[i] = new JButton("" + MainMenu.RESTAURANT_LIST.getAffiliatesEntry(loopCnt).getName()); // get the restaurants from the list to buttons
             jbtRestaurantList[i].addActionListener(passSelectedRest);
             jpSelectRestaurant.add(jbtRestaurantList[i]);
         }
@@ -39,9 +40,9 @@ public class SelectRestaurant extends JPanel{
         public void actionPerformed(ActionEvent e) {
             Object buttonClicked = e.getSource();
             
-            for (int loopCnt = 0 ; loopCnt < OrderUI.RESTAURANT_LIST.getNumberOfAffiliates() ; loopCnt++) {
+            for (int loopCnt = 0 ; loopCnt < MainMenu.RESTAURANT_LIST.getNumberOfAffiliates() ; loopCnt++) {
                 if (jbtRestaurantList[loopCnt] == buttonClicked)
-                    SELECTED_REST = OrderUI.RESTAURANT_LIST.getAffiliatesEntry(loopCnt + 1);
+                    SELECTED_REST = MainMenu.RESTAURANT_LIST.getAffiliatesEntry(loopCnt + 1);
             }
             
             for (int loopCnt = 0 ; loopCnt < SELECTED_REST.getMenuList().getNumberOfMenu() ; loopCnt++) {

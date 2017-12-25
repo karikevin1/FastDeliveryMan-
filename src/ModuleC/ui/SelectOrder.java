@@ -5,17 +5,18 @@
  */
 package ModuleC.ui;
 
+import Client.MainMenu;
 import ModuleA.entity.Customer;
 import ModuleB.entity.DeliveryMan;
 import ModuleC.adt.OrderInterface;
 import ModuleC.adt.OrderQueue;
 import ModuleC.entity.Order;
-import static ModuleC.ui.OrderUI.CUSTOMER_LIST;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -87,16 +88,16 @@ public class SelectOrder extends JPanel{
     }
     
     public void retrieveOrderAct() {
-//      try {
-            Customer customer = CUSTOMER_LIST.getCustByPhoneNum(jtfPhoneNum.getText());
+      try {
+            Customer customer = MainMenu.CUSTOMER_LIST.getCustByPhoneNum(jtfPhoneNum.getText());
 
-            orderList = OrderUI.ORDER_QUEUE.getOrder(customer, new DeliveryMan("LimKH",1629,"0162903850", "no2, jln6", "Male", "970629-14-5571",2000.00,2,15,12,20));
+            orderList = MainMenu.ORDER_QUEUE.getOrder(customer, new DeliveryMan("LimKH",1629,"0162903850", "no2, jln6", "Male", "970629-14-5571",2000.00,2,15,12,20));
 
             System.out.println();
 
-//      } catch (Exception ex) {
-//          JOptionPane.showMessageDialog(null, "Please enter another phone number.", "Phone Number not found", JOptionPane.ERROR_MESSAGE);
-//      }
+      } catch (Exception ex) {
+          JOptionPane.showMessageDialog(null, "Please enter another phone number.", "Phone Number not found", JOptionPane.ERROR_MESSAGE);
+      }
     }
     
     

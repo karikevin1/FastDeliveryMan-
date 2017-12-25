@@ -1,5 +1,6 @@
 package ModuleC.ui;
 
+import Client.MainMenu;
 import ModuleA.adt.FoodInterface;
 import ModuleA.adt.FoodList;
 import ModuleA.entity.Customer;
@@ -214,9 +215,9 @@ public class SelectMenuItem extends JPanel{
                 case JOptionPane.YES_OPTION:
                     method = "Cash";
                     order.setPayment(new Payment(method));
-                    OrderUI.ORDER_QUEUE.enqueueOrder(order);
+                    MainMenu.ORDER_QUEUE.enqueueOrder(order);
                     JOptionPane.showMessageDialog(null, "Your order has been created. Thank you for ordering.");
-                    new ShowOrderDetails(OrderUI.ORDER_QUEUE.getLastOrder());
+                    new ShowOrderDetails(MainMenu.ORDER_QUEUE.getLastOrder());
                     OrderUI.changePanel(new OrderUIType());
                     break;
                 case JOptionPane.NO_OPTION:
@@ -224,9 +225,9 @@ public class SelectMenuItem extends JPanel{
                     String cardNumber = JOptionPane.showInputDialog("Please provide your card number.");
                     if (cardNumber != null) {
                         order.setPayment(new Payment(method));
-                        OrderUI.ORDER_QUEUE.enqueueOrder(order);
+                        MainMenu.ORDER_QUEUE.enqueueOrder(order);
                         JOptionPane.showMessageDialog(null, "Your order has been created. Thank you for ordering.");
-                        new ShowOrderDetails(OrderUI.ORDER_QUEUE.getLastOrder());
+                        new ShowOrderDetails(MainMenu.ORDER_QUEUE.getLastOrder());
                         OrderUI.changePanel(new OrderUIType());
                     }
                     break;
@@ -242,8 +243,8 @@ public class SelectMenuItem extends JPanel{
     public Customer findCustomerByPhoneNumber(String phoneNumber) {
         Customer customer = null;
         
-        for (int loopCnt = 1 ; loopCnt <= OrderUI.CUSTOMER_LIST.getNumberOfCust(); loopCnt++) {
-            customer = OrderUI.CUSTOMER_LIST.getCustEntry(loopCnt); // retrieve the customer from the list
+        for (int loopCnt = 1 ; loopCnt <= MainMenu.CUSTOMER_LIST.getNumberOfCust(); loopCnt++) {
+            customer = MainMenu.CUSTOMER_LIST.getCustEntry(loopCnt); // retrieve the customer from the list
             if (customer.getCustTelNo().equals(phoneNumber))
                 break;
             else
