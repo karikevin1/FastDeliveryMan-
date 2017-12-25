@@ -105,6 +105,7 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         for (int counter = 0; counter < getNumberOfOrder(); counter++) {
             if (((Order)currentOrder.getData()).getOrderID() == ((Order)order).getOrderID()) {
                 result = (T)order;
+                break;
             } else
                 currentOrder = currentOrder.getNext();
         }
