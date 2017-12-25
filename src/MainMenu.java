@@ -124,12 +124,4 @@ public class MainMenu extends JFrame {
     }
     
     
-    public static void main(String[] args) {
-        MainMenu frame = new MainMenu();
-        frame.getContentPane().setPreferredSize(new Dimension(650, 600));
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setVisible(true);
-    }
 }
