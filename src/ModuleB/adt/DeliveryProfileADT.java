@@ -96,7 +96,10 @@ public class DeliveryProfileADT<T> implements DeliveryProfileInterface<T> {
             String outputString = String.format("%-18s%-18s%-23s%-20s%-18s%-18s%-30s%-20s%-23s%-18s%-18s%-10s%-16s\n","Staff name","StaffID","PhoneNo","Address","Status","Gender","ICNO","Salary","DeliveryState","Pendingjobs","TotalDeliveries","Distance","YearsServ");
             DeliveryManNode<T> currentMan = firstMan;
             while (currentMan != null){
-                outputString += "" + currentMan.man + "\n";
+                DeliveryMan temp = (DeliveryMan) currentMan.man;
+                if(temp.getStatus().equals("staff")){
+                    outputString += "" + currentMan.man + "\n";
+                }
                 currentMan = currentMan.nextMan;
             }
            
@@ -111,8 +114,10 @@ public class DeliveryProfileADT<T> implements DeliveryProfileInterface<T> {
             int countGrandTotal =0;
             while (currentMan != null){
                 DeliveryMan temp = (DeliveryMan)currentMan.man;
-                countGrandTotal += temp.getTotalDeliveriesCompleted();
-                outputString +=temp.toReportString()+"\n";
+                if(temp.getStatus().equals("staff")){
+                    countGrandTotal += temp.getTotalDeliveriesCompleted();
+                    outputString +=temp.toReportString()+"\n";
+                }
                 currentMan = currentMan.nextMan;
             }
             outputString += "\n"+ "Grand Total Delivery of all Delivery Man =  "+ countGrandTotal;
