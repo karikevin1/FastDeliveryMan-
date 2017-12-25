@@ -179,11 +179,11 @@ public class DeleteCustomerList extends JFrame {
         }
         
         private void custList() {
-            custList.addCust(new Customer(1, "abc", "abc", "abc", "abc", "abc"));
-            custList.addCust(new Customer(2, "def", "abc", "abc", "abc", "abc"));
-            custList.addCust(new Customer(3, "ghi", "abc", "abc", "abc", "abc"));
-            custList.addCust(new Customer(4, "jkl", "abc", "abc", "abc", "abc"));
-            custList.addCust(new Customer(5, "mno", "abc", "abc", "abc", "abc"));
+            custList.addCust(new Customer(1, "Lim", "900000-00-0000", "012-3456789", "Ampang", "abc@email.com"));
+            custList.addCust(new Customer(2, "Low", "911111-11-1111", "013-4567890", "Setapak", "def@email.com"));
+            custList.addCust(new Customer(3, "Leong", "922222-22-2222", "014-5678901", "Gombak", "ghi@email.com"));
+            custList.addCust(new Customer(4, "Aw", "933333-33-3333", "015-6789012", "Kepong", "jkl@email.com"));
+            custList.addCust(new Customer(5, "X", "944444-44-4444", "016-7890123", "Selayang", "mno@email.com"));
             
             
         } 

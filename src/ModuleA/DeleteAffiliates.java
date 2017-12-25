@@ -174,11 +174,11 @@ public class DeleteAffiliates extends JFrame {
             
         }
     private void affiliatesList() {
-        affiliatesList.addAffiliates(new Affiliates(1, "abc", "abc", "abc", "abc", "abc", "MCD"));
-        affiliatesList.addAffiliates(new Affiliates(2, "def", "abc", "abc", "abc", "abc", "KFC"));
-        affiliatesList.addAffiliates(new Affiliates(3, "ghi", "abc", "abc", "abc", "abc", "Pizza Hut"));
-        affiliatesList.addAffiliates(new Affiliates(4, "jkl", "abc", "abc", "abc", "abc", "Domino Pizza"));
-        affiliatesList.addAffiliates(new Affiliates(5, "mno", "abc", "abc", "abc", "abc", "Texas Chicken"));
+        affiliatesList.addAffiliates(new Affiliates(1, "Lim", "900000-00-0000", "012-3456789", "abc@email.com", "Ampang", "MCD"));
+        affiliatesList.addAffiliates(new Affiliates(2, "Low", "911111-11-1111", "013-4567890", "def@email.com", "Setapak", "KFC"));
+        affiliatesList.addAffiliates(new Affiliates(3, "Leong ", "922222-22-2222", "014-5678901", "ghi@email.com", "Gombak", "Pizza Hut"));
+        affiliatesList.addAffiliates(new Affiliates(4, "Aw", "933333-33-3333", "015-6789012", "jkl@email.com", "Kepong", "Domino Pizza"));
+        affiliatesList.addAffiliates(new Affiliates(5, "X", "944444-44-4444", "016-7890123", "mno@email.com", "Selayang", "Texas Chicken"));
     } 
 
     }
