@@ -62,9 +62,8 @@ public class DeliveryProfileADT<T> implements DeliveryProfileInterface<T> {
         public boolean updateProfile(int Id,T deliEntry){
             boolean ans = false; 
             DeliveryManNode currentMan = firstMan;
-            DeliveryMan temp = new DeliveryMan();
             for (int counter = 1; counter <= numberOfMen; counter++) {
-                temp = (DeliveryMan)currentMan.man; 
+                DeliveryMan temp = (DeliveryMan)currentMan.man; 
                 if(temp.getStaffID() == Id){
                     currentMan.man = deliEntry; 
                     ans = true;
