@@ -5,7 +5,7 @@
  */
 package ModuleD;
 
-import ModuleB.adt.DeliveryProfile;
+import ModuleB.adt.DeliveryProfileADT;
 import ModuleB.adt.DeliveryProfileInterface;
 import ModuleB.entity.DeliveryMan;
 import ModuleD.adt.ScheduleInterface;
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class DeleteCompleteJob extends javax.swing.JFrame {
 
     public static ScheduleInterface<Schedule> scheduleList = new ModuleD.adt.ScheduleADT<>();
-    public static DeliveryProfileInterface<DeliveryMan> deliveryProfileList = new DeliveryProfile<>();
+    public static DeliveryProfileInterface<DeliveryMan> deliveryProfileList = new DeliveryProfileADT<>();
     boolean flag = false;
     int deliveryNo;
 //    String[] order = {"1234", "2654"};
