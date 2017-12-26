@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ModuleB;
+import Client.MainMenu;
 import java.awt.Font;
 import java.awt.*;
 import java.awt.event.*;
@@ -69,7 +70,9 @@ public class DeliveryManManagement extends JFrame{
         jpButton.add(updateProfile);
         jpButton.add(pendingList);
         jpButton.add(updateStatus);
-        jpButton.add(dailyProfile);
+        if (MainMenu.user.getType().equalsIgnoreCase("manager")){
+          jpButton.add(dailyProfile);
+        }
         jPanelAll.add(jpButton, BorderLayout.CENTER);
         
         CreateProfileButtonListener listener = new CreateProfileButtonListener();
