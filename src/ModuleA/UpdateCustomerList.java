@@ -57,6 +57,8 @@ public class UpdateCustomerList extends JFrame{
         jblcustEmail.setVerticalAlignment(SwingConstants.CENTER);
         
         jtaCustList.setEditable(false);
+        jtfcustName.setEditable(false);
+        jtfcustIC.setEditable(false);
         JPanel jpNew = new JPanel(new GridLayout(8,2));
         jpNew.add(jblcustID);
         jpNew.add(jtfcustID);

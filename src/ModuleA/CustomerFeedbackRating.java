@@ -96,7 +96,7 @@ public class CustomerFeedbackRating extends JFrame {
                 JOptionPane.showMessageDialog(null, "Rating form has been submitted");
                 
                 
-                jtaRatingList.setText("Rating ID        Customer Name       Rating Company      Rating Score     Comment\n" + ratingList.getRatingEntry(ratingID).toString() + "\n\nCurrent Food List added :" + ratingList.getNumberOfRating());
+                jtaRatingList.setText("Rating ID        Customer Name       Rating Company                          Rating Score                                        Comment\n" + ratingList.getRatingEntry(ratingID).toString() + "\n\nCurrent Food List added :" + ratingList.getNumberOfRating());
                 
                 rating.setRatingID(Integer.parseInt(jtfRatingID.getText()));
                 rating.setCustRatingName(jtfcustRatingName.getText());

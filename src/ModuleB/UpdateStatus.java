@@ -81,14 +81,15 @@ public class UpdateStatus extends JFrame{
                      validateUpdate = deliveryProfileList.updateStaffStatus(id, status);        
                      if(validateUpdate==true){
                          new DeliveryManManagement().setList(deliveryProfileList); // update the list in the main page
-                         jtaStaffList.setText(deliveryProfileList.toString());
+                         initializeList();
                      }else if (validateUpdate==false){
                          jtaStaffList.setText("Invalid Inputs, Wrong ID inserted or Operation failed.");
                      }
                      new DeliveryManManagement().setList(deliveryProfileList); // update the list in the main page
                      clearText();
                      
-                     dispose(); 
+                     dispose();
+
                  }catch(Exception ex){
                      jtaStaffList.setText("Invalid Input due to invalid inputs.\n Error:" + ex.getMessage());
                  }
@@ -99,7 +100,7 @@ public class UpdateStatus extends JFrame{
             @Override
                 public void actionPerformed(ActionEvent e) {
                   clearText();
-                  jtaStaffList.setText(deliveryProfileList.toString());
+                  initializeList();
                 }
          }
          
@@ -119,7 +120,13 @@ public class UpdateStatus extends JFrame{
          }
 
          private void initializeList() {
-                jtaStaffList.setText(deliveryProfileList.toString());
+             String outputString = String.format("%-18s%-18s%-23s%-20s%-18s%-18s%-30s%-20s%-23s%-18s%-18s%-10s%-16s\n","Staff name","StaffID","PhoneNo","Address","Status","Gender","ICNO","Salary","DeliveryState","Pendingjobs","TotalDeliveries","Distance","YearsServ");
+             for(int a=1 ; a <= deliveryProfileList.getNumberOfEntries();a++){
+                if(deliveryProfileList.getPositionProfile(a).getStatus().equals("Resigned")){
+                    outputString += deliveryProfileList.getPositionProfile(a).toString() + "\n";
+                }
+             }
+             jtaStaffList.setText(outputString);
          }
         
 }
