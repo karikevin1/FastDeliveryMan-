@@ -210,9 +210,20 @@ public class DeleteCompleteJob extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
+        String tempList = "";
         int option = JOptionPane.showConfirmDialog(null, "Do you want to complete this order?");
-        
             if(option == JOptionPane.YES_OPTION){
+                int deli = Integer.valueOf(jtfDeliverymanNumber.getText());
+                //new line of code
+                for(int i = 0; i<scheduleList.getNumberOfSchedule();i++){
+                    if(scheduleList.getSchedule(i).getStaffID()==deli){
+                        tempList = scheduleList.getSchedule(i).getOrderID();
+                    }
+                    
+                }
+                
+                Schedule schedule = new Schedule(deli, tempList);
+                scheduleList.updateSchedule(schedule.getScheduleID(), "Complete");
                 //insert code for complete, add complete count, decrease pending count
                 JOptionPane.showMessageDialog(null, "Order has been completed");
                 jtfDeliverymanNumber.setText("");
