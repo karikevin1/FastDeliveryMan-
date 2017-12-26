@@ -109,11 +109,11 @@ public class CreateAffiliates extends JFrame {
                 Affiliates affiliates = new Affiliates(AffiliatesID, AffiliatesName, AffiliatesIC, AffiliatesTelNo, AffiliatesAddress, AffiliatesEmail, jblAffiliatesCompanyType);
                 
                 affiliatesList.addAffiliates(AffiliatesID, affiliates);
-                JOptionPane.showConfirmDialog(null, "Do you want to create this Affiliates?");
-                JOptionPane.showMessageDialog(null, "Affiliates has been created");
+                JOptionPane.showConfirmDialog(null, "Do you want to create this Affiliates profile?");
+                JOptionPane.showMessageDialog(null, "Affiliates profile has been created");
                 
                     
-                jtaAffiliatesList.setText("Affiliates ID        Affiliates Name        IC Number       Telephone Number     Address      Email      Company Type\n" + affiliatesList.getAffiliatesEntry(AffiliatesID).toString() + "\n\nCurrent Affiliates List added :" + affiliatesList.getNumberOfAffiliates());
+                jtaAffiliatesList.setText("Affiliates ID        Affiliates Name        IC Number                    Email                               Telephone Number             Address                   Company Type\n" + affiliatesList.getAffiliatesEntry(AffiliatesID).toString() + "\n\nCurrent Affiliates List added :" + affiliatesList.getNumberOfAffiliates());
                 
                 affiliates.setAffiliatesID(Integer.parseInt(jtfAffiliatesID.getText()));
                 affiliates.setAffiliatesName(jtfAffiliatesName.getText());

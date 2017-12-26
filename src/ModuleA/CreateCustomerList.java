@@ -107,7 +107,7 @@ public class CreateCustomerList extends JFrame{
                 JOptionPane.showMessageDialog(null, "Customer List has been created");
                 
                     
-                jtaCustList.setText("Customer ID        Customer Name        IC Number       Telephone Number     Address      Email\n" + custList.getCustEntry(custID) + "\n\nCurrent Customer List added :" + custList.getNumberOfCust());
+                jtaCustList.setText("Customer ID        Customer Name        IC Number       Telephone Number                       Address                     Email\n" + custList.getCustEntry(custID) + "\n\nCurrent Customer List added :" + custList.getNumberOfCust());
                 
                 cust.setCustID(Integer.parseInt(jtfcustID.getText()));
                 cust.setCustName(jtfcustName.getText());

@@ -171,9 +171,9 @@ public class UpdateAffiliatesCompanyType extends JFrame{
                 affiliatesList.updateAffiliates(affiliatesID, affiliates);
                 
                 
-                JOptionPane.showConfirmDialog(null, "Do you want to update this customer?");
-                JOptionPane.showMessageDialog(null, "Customer has been updated");
-                jtaAffiliatesList.setText("Affiliates ID        Affiliates Name        IC Number       Telephone Number     Address      Email      Company Type\n" + affiliatesList.getAffiliatesEntry(affiliatesID) + "\n");
+                JOptionPane.showConfirmDialog(null, "Do you want to update this affiliates profile?");
+                JOptionPane.showMessageDialog(null, "Affiliates profile has been updated");
+                jtaAffiliatesList.setText("Affiliates ID        Affiliates Name        IC Number                    Email                               Telephone Number             Address                   Company Type\n" + affiliatesList.getAffiliatesEntry(affiliatesID) + "\n");
                 affiliates.setAffiliatesID(Integer.parseInt(jtfAffiliatesID.getText()));
                 affiliates.setAffiliatesName(jtfAffiliatesName.getText());
                 affiliates.setAffiliatesIC(jtfAffiliatesIC.getText());

@@ -151,7 +151,7 @@ public class UpdateCustomerList extends JFrame{
                 
                 JOptionPane.showConfirmDialog(null, "Do you want to update this customer?");
                 JOptionPane.showMessageDialog(null, "Customer has been updated");
-                jtaCustList.setText("Customer ID        Customer Name       IC Number       Telephone Number     Address        Email\n" + custList.getCustEntry(custID));
+                jtaCustList.setText("Customer ID        Customer Name        IC Number       Telephone Number                       Address                     Email\n" + custList.getCustEntry(custID));
                 cust.setCustID(Integer.parseInt(jtfcustID.getText()));
                 cust.setCustName(jtfcustName.getText());
                 cust.setCustIC(jtfcustIC.getText());
