@@ -141,9 +141,10 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         if (!isEmpty()) {
             for (int counter = 0; counter < getNumberOfOrder(); counter++) {
                 order = (Order)currentOrder.getData();
-                if (order.getCustomer().getCustIC().equalsIgnoreCase(customer.getCustIC()) && order.getDelivery().getStaffID() == deliveryMan.getStaffID())
-                    orderList.enqueueOrder(order);
-                
+                if (order.getClass() != null && order.getDelivery() != null) {
+                    if (order.getCustomer().getCustIC().equalsIgnoreCase(customer.getCustIC()) && order.getDelivery().getStaffID() == deliveryMan.getStaffID())
+                        orderList.enqueueOrder(order);
+                }
                 currentOrder = currentOrder.getNext();
             }
         }
