@@ -17,7 +17,6 @@ public class ModuleAMenu extends JFrame{
     private JLabel jblTitle = new JLabel("Module A Management");
     private JButton createAffiliates = new JButton("Create Affiliates");
     private JButton updateAffiliates = new JButton("Update Affiliates Company Type");
-    private JButton deleteAffiliates = new JButton("Delete Affiliates");
     private JButton CustomerFeedbackRating = new JButton("Customer Feedback Rating");
     private JButton createFood = new JButton("Create Food");
     private JButton updateFood = new JButton("Update Food");
@@ -46,7 +45,6 @@ public class ModuleAMenu extends JFrame{
         
         jpButton.add(createAffiliates);
         jpButton.add(updateAffiliates);
-        jpButton.add(deleteAffiliates);
         jpButton.add(CustomerFeedbackRating);
         jpButton.add(createFood);
         jpButton.add(updateFood);
@@ -62,8 +60,6 @@ public class ModuleAMenu extends JFrame{
         createAffiliates.addActionListener(listnener10);
         updateAffiliatesListener listnener11 = new updateAffiliatesListener();
         updateAffiliates.addActionListener(listnener11);
-        deleteAffiliatesListener listnener12 = new deleteAffiliatesListener();
-        deleteAffiliates.addActionListener(listnener12);
         ratingListener listener13 = new ratingListener();
         CustomerFeedbackRating.addActionListener(listener13);
         CreateFoodListener listener = new CreateFoodListener();
@@ -107,16 +103,6 @@ public class ModuleAMenu extends JFrame{
          }
     }
     
-     private class deleteAffiliatesListener implements ActionListener{
-         public void actionPerformed(ActionEvent e) {
-            DeleteAffiliates frame = new DeleteAffiliates();
-            frame.getContentPane().setPreferredSize(new Dimension(600, 500));
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-            frame.setVisible(true);
-         }
-    }
      private class ratingListener implements ActionListener{
          public void actionPerformed(ActionEvent e) {
             CustomerFeedbackRating frame = new CustomerFeedbackRating();

@@ -60,26 +60,8 @@ public class AffiliatesList<T> implements AffiliatesInterface<T> {
     return isSuccessful;
     }
     
-    public T DeleteAffiliates(int givenAffiliatesPosition){
-     T result = null;
 
-    if ((givenAffiliatesPosition >= 1) && (givenAffiliatesPosition <= numberAffiliatesOfEntries)) {
-      if (givenAffiliatesPosition == 1) {      
-        result = (T)firstAffiliates.getAffiliatesData();    
-        firstAffiliates = firstAffiliates.getNextAffiliates();
-      } else {                     
-        AffiliatesData<T> affiliatesBefore = getAffiliatesAt(givenAffiliatesPosition - 1);
-        AffiliatesData<T> affiliatesToRemove = affiliatesBefore.getNextAffiliates();
-        AffiliatesData<T> affiliatesAfter = affiliatesToRemove.getNextAffiliates();
-        affiliatesBefore.setNextAffiliates(affiliatesAfter); 
-        result = affiliatesToRemove.getAffiliatesData();  
-      }
-
-      numberAffiliatesOfEntries--;
-    }
-
-    return result;
-    }
+    
     public boolean updateAffiliates(int givenAffiliatesPosition, T newAffiliates){
     boolean isSuccessful = true;
 
