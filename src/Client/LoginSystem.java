@@ -116,7 +116,7 @@ public class LoginSystem extends JFrame{
         frame.getContentPane().setPreferredSize(new Dimension(650, 600));
         frame.pack();
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
     }
     

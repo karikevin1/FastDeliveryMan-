@@ -76,6 +76,12 @@ public class GenerateReport extends JPanel {
         String formattedReport = "Monthy Order Report: " + jcbMonth.getSelectedItem().toString() + "\n";
         System.out.println(formattedReport);
         jplOutput.removeAll();
+        jplOutput.add(generatorLabel("Fastest Delivery Man"));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel(""));
+        
         jplOutput.add(generatorLabel("Monthy Order Report: "));
         jplOutput.add(generatorLabel(jcbMonth.getSelectedItem().toString()));
         jplOutput.add(generatorLabel(""));
@@ -123,8 +129,8 @@ public class GenerateReport extends JPanel {
         jplOutput.add(generatorLabel(""));
         jplOutput.add(generatorLabel(""));
         jplOutput.add(generatorLabel(""));
-        jplOutput.add(generatorLabel(""));
-        jplOutput.add(generatorLabel(""));
+        jplOutput.add(generatorLabel("Generated on : "));
+        jplOutput.add(generatorLabel(new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())));
         
         
         add(jplReportConstraint, BorderLayout.NORTH);

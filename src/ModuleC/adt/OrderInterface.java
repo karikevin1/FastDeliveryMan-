@@ -64,6 +64,13 @@ public interface OrderInterface<T> {
     public OrderInterface<T> getOrder(Customer customer, DeliveryMan deliveryMan);
 
     /**
+     * Task: get the order that delivery man is parameter deliveryMan
+     * @param deliveryMan
+     * @return 
+     */
+    public OrderInterface<T> getOrder(DeliveryMan deliveryMan);
+        
+    /**
      *
      * @return
      */

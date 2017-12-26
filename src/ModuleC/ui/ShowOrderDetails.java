@@ -5,10 +5,14 @@
  */
 package ModuleC.ui;
 
+import Client.MainMenu;
 import ModuleA.entity.Customer;
 import ModuleC.entity.Order;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,6 +41,7 @@ public class ShowOrderDetails extends JFrame{
     private final JLabel jlbPrice;
     private final JLabel jlbFoodName = new JLabel("Food Name");
     private final JLabel jlbFoodQuantity = new JLabel("Quantity");
+    private final JButton jbtGenerateReceipt = new JButton("Generate Receipt");
     
     public ShowOrderDetails(Order selectedOrder) {
         /* customer information */
@@ -77,13 +82,19 @@ public class ShowOrderDetails extends JFrame{
             jplOrder.add(orderDetailFactory(selectedOrder.getItemList().getItem(loopCnt).getFoodItem().getFoodName()));
             jplOrder.add(orderDetailFactory(String.valueOf(selectedOrder.getItemList().getItem(loopCnt).getItemQTY())));
         }
+        
+        jbtGenerateReceipt.addActionListener((ActionEvent e) -> {
+            new GenerateReceipt(selectedOrder);
+        });
+        
         jplOrder.add(new JLabel());
         jplOrder.add(new JLabel());
         jplOrder.add(jlbTotalPrice);
         jplOrder.add(jlbPrice);
+        add(jbtGenerateReceipt);
         /* order information end */
         
-        setTitle("Delivery Details");
+        setTitle("Customer Details");
         setSize(500, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -95,5 +106,34 @@ public class ShowOrderDetails extends JFrame{
     
     private JLabel orderDetailFactory(Object orderDetails) {
         return new JLabel(orderDetails.toString());
+    }
+    
+    public class GenerateReceipt extends JFrame{
+        private final JLabel jlbCompanyName = new JLabel("Fastest Delivery Man");
+        private final JPanel jplReceiptHead = new JPanel(new GridLayout(0, 2));
+        
+        public GenerateReceipt(Order order) {
+            jplReceiptHead.add(generatorLabel("Company Name : "));
+            jplReceiptHead.add(jlbCompanyName);
+            jplReceiptHead.add(generatorLabel("Order Date Time : "));
+            jplReceiptHead.add(generatorLabel(new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(order.getOrderDate())));
+            jplReceiptHead.add(generatorLabel("Restaurant Name : "));
+            jplReceiptHead.add(generatorLabel(order.getRestaurant().getName()));
+            jplReceiptHead.add(generatorLabel("Customer Name : "));
+            jplReceiptHead.add(generatorLabel(order.getCustomer().getCustName()));
+            add(jplReceiptHead);
+            add(jplOrder);
+            
+            setLayout(new GridLayout(0, 1));
+            setTitle("Order Receipt");
+            setSize(400, 600);
+            setLocationRelativeTo(null);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setVisible(true);
+        }
+        
+        private JLabel generatorLabel(String label) {
+            return new JLabel(label);
+        }
     }
 }

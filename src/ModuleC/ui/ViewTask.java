@@ -6,7 +6,6 @@
 package ModuleC.ui;
 
 import Client.MainMenu;
-import ModuleA.entity.Customer;
 import ModuleC.adt.OrderInterface;
 import ModuleC.adt.OrderQueue;
 import ModuleC.entity.Order;
@@ -18,26 +17,25 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
  *
  * @author Sing Keat
  */
-public class SelectOrder extends JPanel{
+public class ViewTask extends JPanel {
     private final JPanel jplPhoneNumber = new JPanel(new GridLayout(0, 2));
     private final JPanel jplOrderList = new JPanel();
     private final JLabel jlbStaffID = new JLabel("Staff ID: ", SwingConstants.RIGHT);
-    private final JLabel jlbPhoneNum = new JLabel("Customer Phone Number: ", SwingConstants.RIGHT);
-    private final JTextField jtfPhoneNum = new JTextField();
-    private final JButton jbtRetrieveOrder = new JButton("Retrieve Order");
+    private final JLabel jlbSortByPrice = new JLabel("Sort orders by total price: ", SwingConstants.RIGHT);
+    private final JButton jbtSortByPrice = new JButton("Highest Price");
+    private final JButton jbtRetrieveOrder = new JButton("Retrieve Order by Order Time");
     private final JButton jbtBack = new JButton("Back");
     private final String[] deliveryManIDArr;
     private final JComboBox jcbID;
     private OrderInterface<Order> orderList = new OrderQueue<>();
     
-    public SelectOrder() {
+    public ViewTask() {
         deliveryManIDArr = new String[MainMenu.DELIVERYPROFILE_LIST.getNumberOfEntries()];
         
         for (int i = 0 ; i < MainMenu.DELIVERYPROFILE_LIST.getNumberOfEntries() ; i++) {
@@ -53,13 +51,18 @@ public class SelectOrder extends JPanel{
         jbtBack.addActionListener((ActionEvent e) -> {
             OrderUI.changePanel(new OrderUIType());
         });
+        jbtSortByPrice.addActionListener((ActionEvent e) -> {
+            retrieveOrderAct();
+            orderList.sortByTotalPrice();
+            initOrderListPanel();
+        });
         
-        jplPhoneNumber.add(jlbPhoneNum);
-        jplPhoneNumber.add(jtfPhoneNum);
         jplPhoneNumber.add(jlbStaffID);
         jplPhoneNumber.add(jcbID);
         jplPhoneNumber.add(jbtBack);
         jplPhoneNumber.add(jbtRetrieveOrder);
+        jplPhoneNumber.add(jlbSortByPrice);
+        jplPhoneNumber.add(jbtSortByPrice);
         setLayout(new BorderLayout());
         add(jplPhoneNumber, BorderLayout.NORTH);
         add(jplOrderList, BorderLayout.CENTER);
@@ -92,9 +95,8 @@ public class SelectOrder extends JPanel{
     
     public void retrieveOrderAct() {
       try {
-            Customer customer = MainMenu.CUSTOMER_LIST.getCustByPhoneNum(jtfPhoneNum.getText());
             int staffID = Integer.valueOf(jcbID.getSelectedItem().toString());
-            orderList = MainMenu.ORDER_QUEUE.getOrder(customer, MainMenu.DELIVERYPROFILE_LIST.getSelectedProfile(staffID));
+            orderList = MainMenu.ORDER_QUEUE.getOrder(MainMenu.DELIVERYPROFILE_LIST.getSelectedProfile(staffID));
 
             System.out.println();
 
@@ -102,6 +104,4 @@ public class SelectOrder extends JPanel{
           JOptionPane.showMessageDialog(null, "Please enter another phone number.", "Phone Number not found", JOptionPane.ERROR_MESSAGE);
       }
     }
-    
-    
 }

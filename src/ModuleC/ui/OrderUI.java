@@ -37,6 +37,7 @@ class OrderUIType extends JPanel {
     private final JButton jbtOrder = new JButton("Create Order");
     private final JButton jbtViewOrder = new JButton("View Orders");
     private final JButton jbtReport = new JButton("View Monthy Report");
+    private final JButton jbtViewTask = new JButton("View Tasks");
     private final JPanel jplButtons = new JPanel(new FlowLayout());
     
     public OrderUIType() {
@@ -49,15 +50,20 @@ class OrderUIType extends JPanel {
         jbtReport.addActionListener((ActionEvent e) -> {
             OrderUI.changePanel(new GenerateReport());
         });
+        jbtViewTask.addActionListener((ActionEvent e) -> {
+            OrderUI.changePanel(new ViewTask());
+        });
         
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         
-       if (MainMenu.user.getType().equalsIgnoreCase("customer"))
+        if (MainMenu.user.getType().equalsIgnoreCase("customer"))
             jplButtons.add(jbtOrder);
         else if (MainMenu.user.getType().equalsIgnoreCase("manager"))
             jplButtons.add(jbtReport);
-        else if (MainMenu.user.getType().equalsIgnoreCase("deliveryman"))
+        else if (MainMenu.user.getType().equalsIgnoreCase("hr")) {
             jplButtons.add(jbtViewOrder);
+            jplButtons.add(jbtViewTask);
+        }
         
         add(jlbWelcomeBanner);
         add(jplButtons);

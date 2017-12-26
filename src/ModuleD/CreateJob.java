@@ -189,7 +189,8 @@ public class CreateJob extends javax.swing.JFrame {
         scheduleList.updateSchedule(schedule.getScheduleID(), "Delivering");
 //        scheduleList.addSchedule(deliveryman,orderNo);
 //        System.out.print(scheduleList);
-        
+    
+
         //set status to delivering
         deliveryProfileList.setDeliveryStatus(deliveryman, "Delivering", true ,false); 
         JOptionPane.showMessageDialog(null, "Delivery job has successfully assigned!");

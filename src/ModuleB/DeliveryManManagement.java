@@ -14,7 +14,7 @@ import ModuleB.adt.DeliveryProfileADT;
 import ModuleB.entity.DeliveryMan;
 import ModuleD.Client;
 import ModuleD.adt.ScheduleInterface;
-import ModuleD.entity.Schedule; //this
+import ModuleD.entity.Schedule;
 /**
  *
  * @author kevin lim

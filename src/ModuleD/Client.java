@@ -27,6 +27,10 @@ public class Client extends JFrame{
         return Client.deliveryList;      // getter for super list object
     }
     
+    public void setDeliList (ScheduleInterface<Schedule> deliveryList){
+        Client.deliveryList = deliveryList;      // getter for super list object
+    }
+    
       public void setList (DeliveryProfileInterface<DeliveryMan> deliveryProfileList){
         Client.deliveryProfileList = deliveryProfileList;   // setter for super list object
     }

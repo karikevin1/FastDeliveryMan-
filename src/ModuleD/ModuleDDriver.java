@@ -41,7 +41,7 @@ public class ModuleDDriver extends javax.swing.JFrame {
         btnSchedule = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnTimeClock.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnTimeClock.setText("Time Clock");
@@ -178,7 +178,7 @@ public class ModuleDDriver extends javax.swing.JFrame {
             public void run() {
                 ModuleDDriver driver = new ModuleDDriver();
                 driver.setLocationRelativeTo(null);
-                driver.setDefaultCloseOperation(EXIT_ON_CLOSE);
+//                driver.setDefaultCloseOperation();
                 driver.setVisible(true);
             }
         });

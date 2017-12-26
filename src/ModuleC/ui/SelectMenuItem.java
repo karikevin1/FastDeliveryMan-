@@ -41,6 +41,8 @@ public class SelectMenuItem extends JPanel{
     public FoodInterface<Food> foodList = new FoodList<>();
     
     public SelectMenuItem(Menu selectedMenu){
+        order.setRestaurant(SelectRestaurant.SELECTED_REST);
+        
         foodList = selectedMenu.getFoodList(); // get food list
         jbtFoodList = new JButton[foodList.getNumberOfFood()]; // allocate the jbutton size refer to food item quantity.
         jpSelectFood = new JPanel(new GridBagLayout());

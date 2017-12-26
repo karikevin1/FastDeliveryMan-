@@ -13,7 +13,7 @@ public class SelectRestaurant extends JPanel{
     private final JButton[] jbtRestaurantList;
     private final JButton jbtBack = new JButton("Back");
     private final JPanel jpSelectRestaurant;
-    private static Restaurant SELECTED_REST = null;
+    public static Restaurant SELECTED_REST = null;
     
     public SelectRestaurant(){
         PassSelectedRest passSelectedRest = new PassSelectedRest();

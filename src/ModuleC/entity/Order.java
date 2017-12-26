@@ -2,6 +2,7 @@ package ModuleC.entity;
 
 import ModuleC.adt.ItemInterface;
 import ModuleA.entity.Customer;
+import ModuleA.entity.Restaurant;
 import ModuleC.adt.ItemList;
 import ModuleD.entity.Schedule;
 import java.util.Date;
@@ -13,6 +14,7 @@ public class Order{
     private Date orderDate;
     private Schedule delivery;
     private Payment payment;
+    private Restaurant restaurant;
     
     public Order() {}
     
@@ -26,6 +28,15 @@ public class Order{
         this.orderDate = orderDate;
         this.delivery = delivery;
         this.payment = payment;
+    }
+
+    public Order(int orderID, Customer customer, Date orderDate, Schedule delivery, Payment payment, Restaurant restaurant) {
+        this.orderID = orderID;
+        this.customer = customer;
+        this.orderDate = orderDate;
+        this.delivery = delivery;
+        this.payment = payment;
+        this.restaurant = restaurant;
     }
     
     public void setItemList(ItemInterface<OrderItem> itemList) {
@@ -74,6 +85,14 @@ public class Order{
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
     
     @Override

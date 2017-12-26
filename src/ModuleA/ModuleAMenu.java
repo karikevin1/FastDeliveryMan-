@@ -81,8 +81,8 @@ public class ModuleAMenu extends JFrame{
         UpdateCustListener listener8 = new UpdateCustListener();
         updateCust.addActionListener(listener8);
         SortingListener listener14 = new SortingListener();
-        if (MainMenu.user.getType().equalsIgnoreCase("customer"))
         sortingMethod.addActionListener(listener14);
+       
         GenerateRatingReportListener listener15 = new GenerateRatingReportListener();
         generateRatingReport.addActionListener(listener15);
         add(jPanel1);

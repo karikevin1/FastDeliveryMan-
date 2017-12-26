@@ -151,6 +151,24 @@ public class OrderQueue<T> implements  OrderInterface<T> {
         return (OrderInterface<T>) orderList;
     }
     
+    @Override
+    public OrderInterface<T> getOrder(DeliveryMan deliveryMan) {
+        Node<T> currentOrder = firstOrder;
+        OrderInterface<Order> orderList = new OrderQueue<>();
+        Order order;
+        if (!isEmpty()) {
+            for (int counter = 0; counter < getNumberOfOrder(); counter++) {
+                order = (Order)currentOrder.getData();
+                if (order.getClass() != null && order.getDelivery() != null) {
+                    if (order.getDelivery().getStaffID() == deliveryMan.getStaffID())
+                        orderList.enqueueOrder(order);
+                }
+                currentOrder = currentOrder.getNext();
+            }
+        }
+        return (OrderInterface<T>) orderList;
+    }
+    
     private Node<T> getOrderAt(int givenPosition) {
         Node<T> currentOrder = firstOrder;
 
