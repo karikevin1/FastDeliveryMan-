@@ -55,6 +55,7 @@ public class MainMenu extends JFrame {
     final static public AffiliatesInterface<Restaurant> RESTAURANT_LIST = new AffiliatesList<>();                           //sing keat added these
     final static public CustomerInterface<Customer> CUSTOMER_LIST = new CustomerList<>();                                   //sing keat added these
     final static public DeliveryProfileInterface<DeliveryMan> DELIVERYPROFILE_LIST = new DeliveryManManagement().getList(); //sing keat added these
+    final static public LoginSystem.LoginAccount user = LoginSystem.getLoginAccount();
     
     public static String username = new LoginSystem().getUsername();
     public static String password = new LoginSystem().getPassword();

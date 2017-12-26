@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ModuleA;
+import Client.MainMenu;
 import java.awt.Font;
 import java.awt.*;
 import java.awt.event.*;
@@ -43,17 +44,22 @@ public class ModuleAMenu extends JFrame{
         
         JPanel jpButton = new JPanel(new FlowLayout());
         
-        jpButton.add(createAffiliates);
-        jpButton.add(updateAffiliates);
-        jpButton.add(CustomerFeedbackRating);
-        jpButton.add(createFood);
-        jpButton.add(updateFood);
-        jpButton.add(deleteFood);
-        jpButton.add(updateMenuStatus);
-        jpButton.add(createCust);
-        jpButton.add(updateCust);
-        jpButton.add(sortingMethod);
-        jpButton.add(generateRatingReport);
+        
+
+        if (MainMenu.user.getType().equalsIgnoreCase("manager")){
+            jpButton.add(createFood);
+            jpButton.add(updateFood);
+            jpButton.add(deleteFood);
+            jpButton.add(updateMenuStatus);
+            jpButton.add(sortingMethod);
+            jpButton.add(generateRatingReport);
+        }else if (MainMenu.user.getType().equalsIgnoreCase("customer")){
+            jpButton.add(createCust);
+            jpButton.add(updateCust);
+            jpButton.add(CustomerFeedbackRating);
+            jpButton.add(createAffiliates);
+            jpButton.add(updateAffiliates);
+        }
         jPanel1.add(jpButton, BorderLayout.CENTER);
         
         createAffiliatesListener listnener10 = new createAffiliatesListener();
@@ -75,6 +81,7 @@ public class ModuleAMenu extends JFrame{
         UpdateCustListener listener8 = new UpdateCustListener();
         updateCust.addActionListener(listener8);
         SortingListener listener14 = new SortingListener();
+        if (MainMenu.user.getType().equalsIgnoreCase("customer"))
         sortingMethod.addActionListener(listener14);
         GenerateRatingReportListener listener15 = new GenerateRatingReportListener();
         generateRatingReport.addActionListener(listener15);

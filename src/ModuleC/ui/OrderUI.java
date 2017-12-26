@@ -1,5 +1,6 @@
 package ModuleC.ui;
 
+import Client.MainMenu;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
@@ -50,9 +51,14 @@ class OrderUIType extends JPanel {
         });
         
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        jplButtons.add(jbtOrder);
-        jplButtons.add(jbtReport);
-        jplButtons.add(jbtViewOrder);
+        
+       if (MainMenu.user.getType().equalsIgnoreCase("customer"))
+            jplButtons.add(jbtOrder);
+        else if (MainMenu.user.getType().equalsIgnoreCase("manager"))
+            jplButtons.add(jbtReport);
+        else if (MainMenu.user.getType().equalsIgnoreCase("deliveryman"))
+            jplButtons.add(jbtViewOrder);
+        
         add(jlbWelcomeBanner);
         add(jplButtons);
     }

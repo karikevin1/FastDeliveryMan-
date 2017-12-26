@@ -70,6 +70,7 @@ public class DeliveryManManagement extends JFrame{
         jpButton.add(pendingList);
         jpButton.add(updateStatus);
         jpButton.add(dailyProfile);
+        
         jPanelAll.add(jpButton, BorderLayout.CENTER);
         
         CreateProfileButtonListener listener = new CreateProfileButtonListener();
