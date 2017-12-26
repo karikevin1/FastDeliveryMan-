@@ -11,11 +11,11 @@ package ModuleD.adt;
 public interface ScheduleInterface<T> {
     public boolean addSchedule(T newSchedule);
 //    public boolean addSchedule(int newPosition, T newSchedule);
-    public T removeSchedule(int position);
+//    public T removeSchedule(int position);
 //    public boolean replaceSchedule(int position, T newSchedule);
     public T getSchedule(int position);
     public String getPendingList(int Id);
-    public T updateSchedule(int position);
+    public boolean updateSchedule(String scheduleID, String status);
     public int getNumberOfSchedule();
     public boolean isEmpty(); 
 //    public boolean clearSchedule();

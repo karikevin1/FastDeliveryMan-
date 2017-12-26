@@ -83,10 +83,21 @@ public class ScheduleADT<T> implements ScheduleInterface<T> {
         return result;
     }
     
-    public T updateSchedule(int position){
-        T result = (T)getNodeAt(position).schedule;
-//        T updates = ; //update code 
-        return result;
+    public boolean updateSchedule(String scheduleID ,String status){
+        boolean flag = false;
+        ScheduleNode<T> currentSchedule = firstSchedule;
+        for(int i = 1; i <= numberOfSchedule; i++){
+            Schedule temp = (Schedule)currentSchedule.schedule;
+            if(temp.getScheduleID() == scheduleID){
+                temp.setDeliveryStatus(status);
+                currentSchedule.schedule = (T)temp;
+                flag = true;
+            }else{
+                currentSchedule = currentSchedule.nextSchedule;
+            }
+        }
+        
+        return flag;
     }
     
     private class ScheduleNode<T>{

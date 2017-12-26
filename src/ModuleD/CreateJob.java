@@ -184,7 +184,9 @@ public class CreateJob extends javax.swing.JFrame {
         String orderNo = String.valueOf(order);
         jcbOrderNo.removeItemAt(selectedOrder);
         Schedule schedule = new Schedule(deliveryman,orderNo);
-        scheduleList.addSchedule(schedule);
+        
+        //newly added
+        scheduleList.updateSchedule(schedule.getScheduleID(), "Delivering");
 //        scheduleList.addSchedule(deliveryman,orderNo);
 //        System.out.print(scheduleList);
         

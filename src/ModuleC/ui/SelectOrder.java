@@ -15,6 +15,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -28,15 +29,25 @@ import javax.swing.SwingConstants;
 public class SelectOrder extends JPanel{
     private final JPanel jplPhoneNumber = new JPanel(new GridLayout(0, 2));
     private final JPanel jplOrderList = new JPanel();
+    private final JLabel jlbStaffID = new JLabel("Staff ID: ", SwingConstants.RIGHT);
     private final JLabel jlbPhoneNum = new JLabel("Customer Phone Number: ", SwingConstants.RIGHT);
     private final JTextField jtfPhoneNum = new JTextField();
     private final JLabel jlbSortByPrice = new JLabel("Sort orders by total price: ", SwingConstants.RIGHT);
     private final JButton jbtSortByPrice = new JButton("Highest Price");
     private final JButton jbtRetrieveOrder = new JButton("Retrieve Order by Order Time");
     private final JButton jbtBack = new JButton("Back");
+    private final String[] deliveryManIDArr;
+    private final JComboBox jcbID;
     private OrderInterface<Order> orderList = new OrderQueue<>();
     
     public SelectOrder() {
+        deliveryManIDArr = new String[MainMenu.DELIVERYPROFILE_LIST.getNumberOfEntries()];
+        
+        for (int i = 0 ; i < MainMenu.DELIVERYPROFILE_LIST.getNumberOfEntries() ; i++) {
+            deliveryManIDArr[i] = String.valueOf(MainMenu.DELIVERYPROFILE_LIST.getPositionProfile(i + 1).getStaffID());
+        }
+        
+        jcbID = new JComboBox(deliveryManIDArr);
         
         jbtRetrieveOrder.addActionListener((ActionEvent e) -> {
             retrieveOrderAct();
@@ -53,6 +64,8 @@ public class SelectOrder extends JPanel{
         
         jplPhoneNumber.add(jlbPhoneNum);
         jplPhoneNumber.add(jtfPhoneNum);
+        jplPhoneNumber.add(jlbStaffID);
+        jplPhoneNumber.add(jcbID);
         jplPhoneNumber.add(jbtBack);
         jplPhoneNumber.add(jbtRetrieveOrder);
         jplPhoneNumber.add(jlbSortByPrice);
@@ -90,8 +103,8 @@ public class SelectOrder extends JPanel{
     public void retrieveOrderAct() {
       try {
             Customer customer = MainMenu.CUSTOMER_LIST.getCustByPhoneNum(jtfPhoneNum.getText());
-
-            orderList = MainMenu.ORDER_QUEUE.getOrder(customer, new DeliveryMan("LimKH",1629,"0162903850", "no2, jln6", "Male", "970629-14-5571",2000.00,2,15,12,20));
+            int staffID = Integer.valueOf(jcbID.getSelectedItem().toString());
+            orderList = MainMenu.ORDER_QUEUE.getOrder(customer, MainMenu.DELIVERYPROFILE_LIST.getSelectedProfile(staffID)); // new DeliveryMan("LimKH",1629,"0162903850", "no2, jln6", "Male", "970629-14-5571",2000.00,2,15,12,20));
 
             System.out.println();
 
