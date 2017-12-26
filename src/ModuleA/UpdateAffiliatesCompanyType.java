@@ -67,6 +67,8 @@ public class UpdateAffiliatesCompanyType extends JFrame{
         jblAffiliatesCompanyType.setVerticalAlignment(SwingConstants.CENTER);
         
         jtaAffiliatesList.setEditable(false);
+        jtfAffiliatesName.setEditable(false);
+        jtfAffiliatesIC.setEditable(false);
         JPanel jpNew = new JPanel(new GridLayout(10,2));
         jpNew.add(jblAffiliatesID);
         jpNew.add(jtfAffiliatesID);
